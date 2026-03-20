@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+// Sebastian Hernandez-Tavares
+
 
 public class PiEstimator extends JFrame {
 
@@ -20,8 +22,7 @@ public class PiEstimator extends JFrame {
     public PiEstimator() {
         super("Pi Estimator");
 
-    
-		
+
         actualPiLabel = new JLabel("Actual value of pi: " + Math.PI);
 
 
@@ -113,7 +114,7 @@ public class PiEstimator extends JFrame {
                 synchronized (lock) {
                     while (!running) {
                         try {
-                            lock.wait(); // Pause thread
+                            lock.wait(); // we need to wait till the boys want us to go
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                             return;
@@ -121,7 +122,7 @@ public class PiEstimator extends JFrame {
                     }
                 }
 
-                // Perform a batch of 1 million trials
+                // lets do like a trillion trials here
                 for (int i = 0; i < 1000000; i++) {
                     double x = Math.random();
                     double y = Math.random();
